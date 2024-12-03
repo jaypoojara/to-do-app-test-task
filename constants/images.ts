@@ -1,0 +1,15 @@
+export const Images = {
+  book: require("@/assets/images/book.jpg"),
+  logo: require("@/assets/images/logo.png"),
+  writer: require("@/assets/images/writer.png"),
+  next: require("@/assets/images/next.png"),
+  calendar: require("@/assets/images/calendar.png"),
+  plus: require("@/assets/images/plus.png"),
+  search: require("@/assets/images/search.png"),
+  user: require("@/assets/images/user.png"),
+  filter: require("@/assets/images/filter.png"),
+  editing: require("@/assets/images/editing.png"),
+  clock: require("@/assets/images/clock.png"),
+  logout: require("@/assets/images/logout.png"),
+  noData: require("@/assets/images/no-data.png"),
+};
