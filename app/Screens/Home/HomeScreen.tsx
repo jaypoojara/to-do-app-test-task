@@ -75,6 +75,13 @@ const HomeScreen: FC = () => {
   const noTasks =
     completedTasksFlat.length <= 0 && incompleteTasksFlat.length <= 0;
 
+  const totalCounts = useMemo(() => {
+    return tasksCounts?.counts.incomplete !== undefined &&
+      tasksCounts?.counts.completed !== undefined
+      ? tasksCounts.counts.incomplete + tasksCounts.counts.completed
+      : 0;
+  }, [completedTasksFlat, incompleteTasksFlat]);
+
   return (
     <FullScreenContainer style={styles.container}>
       <View style={styles.greetingContainer}>
@@ -116,11 +123,7 @@ const HomeScreen: FC = () => {
             <Text style={styles.tasksTextBold}>
               {tasksCounts?.counts.completed ?? 0}
             </Text>{" "}
-            /
-            {tasksCounts?.counts.incomplete && tasksCounts?.counts.completed
-              ? tasksCounts.counts.incomplete + tasksCounts.counts.completed
-              : 0}{" "}
-            tasks
+            /{totalCounts} tasks
           </Text>
         </View>
       </View>
