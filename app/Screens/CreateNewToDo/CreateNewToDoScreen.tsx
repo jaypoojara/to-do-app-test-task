@@ -24,6 +24,7 @@ import {
 import { NavigationProps } from "@/types/navigation.types";
 import AppHeader from "@/components/AppHeader";
 import DateTimePicker from "react-native-ui-datepicker";
+import CONSTANTS from "@/constants";
 
 const CreateNewToDoScreen: FC<NavigationProps<"CreateNewToDoScreen">> = ({
   route,
@@ -43,7 +44,7 @@ const CreateNewToDoScreen: FC<NavigationProps<"CreateNewToDoScreen">> = ({
       description: task?.description || "",
       due_date: task?.due_date
         ? moment(
-            moment.utc(task?.due_date).format("YYYY-MM-DD HH:mm:ss")
+            moment.utc(task?.due_date).format(CONSTANTS.universalDateTimeFormat)
           ).toDate()
         : new Date(),
       isCompleted: task?.isCompleted || false,
@@ -56,7 +57,9 @@ const CreateNewToDoScreen: FC<NavigationProps<"CreateNewToDoScreen">> = ({
     onSubmit: async (values) => {
       const payload = {
         ...values,
-        due_date: moment(values.due_date).format("YYYY-MM-DD HH:mm:ss"),
+        due_date: moment(values.due_date).format(
+          CONSTANTS.universalDateTimeFormat
+        ),
       };
       if (task?.id) {
         const updatePayload = {
@@ -136,13 +139,13 @@ const CreateNewToDoScreen: FC<NavigationProps<"CreateNewToDoScreen">> = ({
                       },
                     ]}
                   >
-                    {moment(values.due_date).format("DD-MM-YYYY [at] LT")}
+                    {moment(values.due_date).format(CONSTANTS.dateTimeFormat)}
                   </Text>
                 </TouchableOpacity>
               </View>
 
               {isShowDatePicker && (
-                <View style={{ maxWidth: 400, alignSelf: "center" }}>
+                <View style={styles.dateTimePickerWrapper}>
                   <DateTimePicker
                     date={moment(values.due_date).toDate()}
                     mode="single"

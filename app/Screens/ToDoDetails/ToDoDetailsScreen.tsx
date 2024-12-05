@@ -1,4 +1,4 @@
-import { View, Text, Image, ScrollView, Alert } from "react-native";
+import { View, Text, Image, ScrollView } from "react-native";
 import { FC, useState } from "react";
 import FullScreenContainer from "@/components/FullScreenContainer";
 import { navigate } from "@/utils/NavigationUtils";
@@ -14,6 +14,7 @@ import {
 } from "@/services/task/task.query";
 import AppHeader from "@/components/AppHeader";
 import AppAlert from "@/components/AppAlert";
+import CONSTANTS from "@/constants";
 
 const ToDoDetailsScreen: FC<NavigationProps<"ToDoDetailsScreen">> = ({
   route,
@@ -61,13 +62,13 @@ const ToDoDetailsScreen: FC<NavigationProps<"ToDoDetailsScreen">> = ({
           <View style={styles.infoRow}>
             <Image source={Images.calendar} style={styles.icon} />
             <Text style={styles.infoText}>
-              {moment.utc(task.due_date).format("DD-MM-YYYY")}
+              {moment.utc(task.due_date).format(CONSTANTS.dateFormat)}
             </Text>
           </View>
           <View style={styles.infoRow}>
             <Image source={Images.clock} style={styles.icon} />
             <Text style={styles.infoText}>
-              {moment.utc(task.due_date).format("LT")}
+              {moment.utc(task.due_date).format(CONSTANTS.timeFormat)}
             </Text>
           </View>
         </View>

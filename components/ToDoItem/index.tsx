@@ -7,6 +7,7 @@ import { navigate } from "@/utils/NavigationUtils";
 import Routes from "@/constants/routes";
 import { Task } from "@/types/service.types";
 import moment from "moment";
+import CONSTANTS from "@/constants";
 
 const ToDoItem: FC<Task> = (props) => {
   const { isCompleted, title, description, due_date } = props;
@@ -39,7 +40,7 @@ const ToDoItem: FC<Task> = (props) => {
         <View style={styles.dateContainer}>
           <Image source={Images.calendar} style={styles.taskDateImage} />
           <Text numberOfLines={2} style={styles.dateText}>
-            {moment(due_date).format("DD-MM-YYYY")}
+            {moment(due_date).format(CONSTANTS.dateFormat)}
           </Text>
         </View>
       </View>

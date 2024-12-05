@@ -54,6 +54,10 @@ export const styles = StyleSheet.create({
     fontSize: 13,
     letterSpacing: 0.3,
   },
+  dateTimePickerWrapper: {
+    maxWidth: 400,
+    alignSelf: "center",
+  },
   createButton: {
     marginTop: 20,
     marginBottom: 10,
