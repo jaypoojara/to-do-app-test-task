@@ -1,10 +1,10 @@
 import axios, { AxiosResponse, AxiosRequestConfig } from "axios";
 import StorageHelper from "@/utils/StorageHelper";
-import { DeviceEventEmitter } from "react-native";
+import { DeviceEventEmitter, Platform } from "react-native";
 import EventKey from "@/constants/eventKey";
 
 const axiosInstance = axios.create({
-  baseURL: "https://to-do-list-nodejs-c096f991a2c0.herokuapp.com",
+  baseURL: process.env.EXPO_PUBLIC_BASE_URL,
 });
 
 const ResponseInterceptor = (response: AxiosResponse) => {
